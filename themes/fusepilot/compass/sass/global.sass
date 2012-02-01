@@ -1,0 +1,110 @@
+$blueprint-grid-columns: 16
+$blueprint-grid-width: 40px
+$blueprint-grid-margin: 20px
+
+$highlight: #BDDF56
+$text_color: hsl(0, 0%, 60%)
+$bright_text_color: white
+$dark_text_color: hsl(0%, 0%, 35%)
+$dark_background_color: rgba(13,13,13, .93)
+$margin: 20px
+$padding: 20px
+$box_margin: 1px
+$p_size: 10px
+$radius: 3px
+$error_color: rgb(255, 82, 85)
+
+$inset_color: hsl(0, 0%, 11%)
+$dark_inset_color: hsl(0, 0%, 7%)
+
+$site_width: 1000px
+
+@function border($color:black)
+  @return 1px dotted $color
+  
+@mixin sprite($x, $y, $width:nil, $height:nil)
+  @if $width != nil
+    width: $width
+  @if $height != nil
+    height: $height
+  background: url("images/site_sprites.png") $x $y no-repeat
+
+@mixin font($weight:normal, $style:none)
+  @if $weight == normal
+    font-family: Forza Light
+    
+    @if $style == italic
+      font-style: italic
+
+  @else if $weight == bold
+    font-family: Forza Medium
+    
+    @if $style == italic
+      font-style: italic
+
+@mixin box_container($scheme)
+  @if $scheme == dark
+    background-color: $dark_background_color
+  @else if $scheme == light
+    background: url("images/light_box_bg.png")
+
+  @else if $scheme == highlight
+    background: url("images/highlight_box_bg.gif")
+    
+  padding: $padding
+  +box-sizing(border-box)
+  margin-bottom: $box_margin
+  
+@mixin inset($color:$inset_color)
+  +box-shadow(rgba(0, 0, 0, 0.25) 1px 1px inset, rgba(255,255,255,.125) -1px -1px inset)
+  +border-radius($radius)
+  +box-sizing(border-box)
+  background: $color
+  color: $text_color
+      
+@mixin input($color:$inset_color)
+  +inset($color)
+  padding: 10px
+  border: border(transparent)
+  
+  +transition(all)
+  +transition-duration(.25s)
+  
+  &:focus
+    outline: none
+    border: border($highlight)
+    
+@mixin button($size, $color:$inset_color)
+  @if $size == small
+    font-size: 8px
+    padding: 0.2em 0.8em 
+  
+  @else if $size == medium
+    padding: 0.3em 0.7em
+    font-size: 10px
+  
+  @else if $size == large
+    padding: 0.6em 0.6em
+    font-size: 15px
+    
+  +inset($color)
+  display: inline-block
+  text-transform: uppercase
+  cursor: pointer
+  display: inline-block
+  margin-top: 3px
+  
+  +transition(background)
+  +transition-duration(.25s)
+
+  &:hover
+    background: $highlight
+    color: black
+    
+@mixin scrollbar
+  ::-webkit-scrollbar
+    background: url('images/form_bg.png')
+    height: 4px
+    
+  ::-webkit-scrollbar-thumb
+    background-color: $highlight
