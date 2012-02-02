@@ -41,37 +41,6 @@ $(document).ready(function (){
   
   
   
-  // add overlay to masonry
-  
-  $("#masonry .masonry_col").each(function() {
-    var $col, $overlay;
-    $col = $(this);
-    $overlay = $(".masonry_col_overlay", $col);
-    $overlay.css('width', $col.width());
-    $overlay.css('height', $col.height() - 1);
-    
-    $col.hover(function() {
-      $overlay.clearQueue().show().css({
-        top: -160,
-        opacity: 0
-      }).animate({
-        top: 0,
-        opacity: .9
-      }, 100);
-    }, function() {
-      $overlay.clearQueue().animate({
-        //top: 160,
-        opacity: 0,
-      }, 300, function() {
-        $overlay.hide();
-      });
-    });
-  });
-  
-  
-  
-  
-  
   
   // sets the width of the category meters
   
@@ -132,6 +101,33 @@ $(document).ready(function (){
 });
 
 $(window).load(function() {
+  // add overlay to masonry
+
+   $("#masonry .masonry_col").each(function() {
+     var $col, $overlay;
+     $col = $(this);
+     $overlay = $(".masonry_col_overlay", $col);
+     $overlay.css('width', $col.width());
+     $overlay.css('height', $col.height() - 1);
+
+     $col.hover(function() {
+       $overlay.clearQueue().show().css({
+         top: -160,
+         opacity: 0
+       }).animate({
+         top: 0,
+         opacity: .9
+       }, 100);
+     }, function() {
+       $overlay.clearQueue().animate({
+         //top: 160,
+         opacity: 0,
+       }, 300, function() {
+         $overlay.hide();
+       });
+     });
+   });
+  
   // flex galleries
   
   if($.fn.flexslider) {
