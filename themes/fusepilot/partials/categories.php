@@ -19,7 +19,7 @@
         
         <div class="category_meter"></div>
         <div class="category_link">
-          <a href="<?php echo get_category_link( $category->term_id ); ?>"><?php echo $category->name; ?></a>
+          <?php echo get_category_anchor($category); ?>
         </div>
       </div>
     <?php endforeach; ?>    

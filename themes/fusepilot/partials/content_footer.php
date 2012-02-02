@@ -19,7 +19,7 @@
       <ul class="category_list" data-max-count="<?php echo $max_count; ?>">
         <?php foreach($categories as $category): ?>
         <li class="category_item">
-          <a href="<?php echo get_category_link( $category->term_id ); ?>" data-count="<?php echo $category->count ?>"><?php echo $category->name?></a>
+          <?php echo get_category_anchor($category); ?>
         </li>
         <?php endforeach; ?>
       </ul>
