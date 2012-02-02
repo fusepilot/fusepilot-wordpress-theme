@@ -13,7 +13,7 @@
       <?php endif; ?>
     </p>
     <p>
-      <?php if(count(get_the_tags()) > 0): ?>
+      <?php if(count(get_the_tags()) > 1): ?>
         <span>Tags: </span><?php foreach(get_the_tags() as $index=>$tag): ?>
           <?php echo get_tag_anchor($tag); ?>
         <?php endforeach; ?>
