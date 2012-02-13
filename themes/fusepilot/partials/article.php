@@ -9,7 +9,7 @@
 ?>
 <article class="<?php echo $class; ?>">
   
-  <?php if(get_field('gallery') || get_field('teaser')): ?>
+  <?php if(get_field('gallery')): ?>
     <div id="gallery" class="flexslider">
       <div class="slides">
     		<?php while(the_repeater_field('gallery')): 
@@ -19,11 +19,15 @@
   			
     			<?php wp_enqueue_script( 'flex' );
     		endwhile; ?>
-  		
-    		<?php $image_id = get_field('teaser'); ?>
+  		  
+  		  <?php if(get_field('teaser')): ?>
+      		<?php $image_id = get_field('teaser'); ?>
+    		<?php endif; ?>
         <li><?php echo wp_get_attachment_image($image_id, 'gallery'); ?></li>
       </div>
     </div>
+  <?php elseif(get_field('teaser')): ?>
+    <?php echo wp_get_attachment_image(get_field('teaser'), 'gallery'); ?>
 	<?php endif; ?>
 	
 	
