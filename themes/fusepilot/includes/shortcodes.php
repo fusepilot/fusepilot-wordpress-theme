@@ -98,21 +98,32 @@
     extract( shortcode_atts( array(
       'filename' =>'',
       'alt' =>'',
-      'style' => 'gallery',
+      'style' => 'original',
     ), $atts ) );
     
     
     $query_images_args = array('post_type' => 'attachment', 'post_mime_type' =>'image', 'post_status' => 'inherit', 'posts_per_page' => -1);
     $query_images = new WP_Query( $query_images_args );
     $image_src = "";
+    $classes = "";
+    
+    if($style == 'original') {
+      $classes .= "original";
+    } elseif($style == 'fit') {
+      $classes .= "fit";
+      $style = 'original'; #change back so wp_get_attachment_image_src use the original image to fit
+    }
+    
     foreach ( $query_images->posts as $image) {
       if( esc_html( basename( $image->guid )) == $filename) {
-        $image_src = wp_get_attachment_image($image->ID, $style);
+        $image_src = wp_get_attachment_image_src($image->ID, $style);
+        $image = '<img class="' . $classes . '" src="' . $image_src[0] . '" />';
         break;
+        
       }
     }
     
-    $output = $image_src;
+    $output = $image;
     return $output;
   }
 
