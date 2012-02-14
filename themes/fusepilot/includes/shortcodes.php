@@ -21,6 +21,26 @@
   return '<iframe class="video vimeo" src="http://player.vimeo.com/video/'.$id.'?title=0&byline=0&portrait=0&color=ffffff" width="'.$width.'" height="'.$height.'" frameborder="0"></iframe>';
   }
   add_shortcode("vimeo", "vimeo_embed_shortcode");
+
+
+
+
+
+
+  function youtube_embed_shortcode($atts, $content = null) {
+    extract(shortcode_atts(array(
+        "id" => '',
+        "width" => '700',
+        "height" => '394'
+    ), $atts));
+  return '<iframe class="video youtube" type="text/html" width="' . $width . '" height="' . $height . '" src="http://www.youtube.com/embed/' . $id . '" frameborder="0">
+  </iframe>';
+  }
+  add_shortcode("youtube", "youtube_embed_shortcode");
+
+
+  
+  
   
   
   
