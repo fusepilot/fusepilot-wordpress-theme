@@ -107,12 +107,12 @@ if(isset($_POST['submitted'])) {
   		</div>
 		
   		<div>
-  			<input type="checkbox" name="sendCopy" id="sendCopy" tabindex="4" value="true"<?php if(isset($_POST['sendCopy']) && $_POST['sendCopy'] == true) echo ' checked="checked"'; ?> /><label for="sendCopy">Send a copy of this email to yourself</label>
+  			<input type="checkbox" name="sendCopy" id="sendCopy" value="true"<?php if(isset($_POST['sendCopy']) && $_POST['sendCopy'] == true) echo ' checked="checked"'; ?> /><label for="sendCopy">Send a copy of this email to yourself</label>
   		</div>
 		
   		<div>
   			<input type="hidden" name="submitted" id="submitted" value="true" />
-  			<input type="submit" value="Send" id="searchsubmit" tabindex="6" />
+  			<input type="submit" value="Send" id="searchsubmit" tabindex="4" />
 			</div>
 		</form>
 	</div>

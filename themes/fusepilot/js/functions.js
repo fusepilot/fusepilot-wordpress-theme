@@ -22,13 +22,16 @@ $(document).ready(function (){
   // replace form button with styleble sumbit button
   
   $('input[type="submit"]', '#sidebar, #content').each(function(){
-     $(this).after(unescape('<a class="submit_button"></a>'));
-     $(this).hide();
-     $(this).next('a.submit_button').text($(this).val()).click(function(){
-         $(this).prev('input[type="submit"]').click();
-     });
-   });
-   
+    $submit_btn = $('<a class="submit_button"></a>');
+    $(this).after($submit_btn);
+    $submit_btn.attr("tabindex", $(this).attr("tabindex"));
+    $(this).removeAttr("tabindex");
+    $(this).hide();
+    $(this).next('a.submit_button').text($(this).val()).click(function(){
+       $(this).prev('input[type="submit"]').click();
+    });
+  });
+ 
    
    
    
